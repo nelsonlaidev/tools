@@ -1,15 +1,9 @@
 <p align="center">
-  <img src="https://honghong.me/images/projects/tools/cover.png">
+  <img src="public/icon.png" height="128">
+  <h1 align="center">Links</h1>
 </p>
 
-## Tech Stack
-
-| Name       | Link                           |
-| ---------- | ------------------------------ |
-| Framework  | [Next.js](https://nextjs.org/) |
-| Deployment | [Vercel](https://vercel.com)   |
-
-## Features
+## Tools
 
 - CSS unit converter
 - Color converter
@@ -22,31 +16,32 @@
 
 Follow these steps to run the project locally on your machine:
 
-1. Clone the repository
+1. Clone the repository.
 
 ```bash
-git clone https://github.com/tszhong0411/tools.git
+git clone https://github.com/nelsonlaidev/tools.git
 ```
 
-2. Navigate to the project directory
+2. Navigate to the project directory.
 
 ```bash
 cd tools
 ```
 
-3. Install dependencies
+3. Install dependencies.
 
 ```bash
 pnpm install
 ```
 
-4. Run the development server
+4. Run the development server.
 
 ```bash
 pnpm dev
 ```
 
-<hr>
+---
+
 <p align="center">
 Made with ❤️ in Hong Kong
 </p>

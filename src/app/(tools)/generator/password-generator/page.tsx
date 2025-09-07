@@ -1,10 +1,14 @@
 'use client'
 
-import { Button, Checkbox, Input, Label, toast } from '@tszhong0411/ui'
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 import Container from '@/components/container'
 import Title from '@/components/title'
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 const PasswordGenerator = () => {
   const [length, setLength] = useState(10)
@@ -56,6 +60,7 @@ const PasswordGenerator = () => {
     let generatedPassword = ''
 
     for (let i = 0; i < length; i++) {
+      // eslint-disable-next-line sonarjs/pseudo-random -- Safe
       generatedPassword += chars.charAt(Math.floor(Math.random() * chars.length))
     }
 
@@ -157,9 +162,7 @@ const PasswordGenerator = () => {
                   setAvoidSimilarChars(value)
                 }}
               />
-              <Label htmlFor='avoid-similar-chars'>
-                Avoid similar characters (e.g. 1 and l, 0 and O)
-              </Label>
+              <Label htmlFor='avoid-similar-chars'>Avoid similar characters (e.g. 1 and l, 0 and O)</Label>
             </div>
           </div>
         </div>
@@ -174,7 +177,7 @@ const PasswordGenerator = () => {
         {password && (
           <div className='space-y-2'>
             <div className='font-bold'>Generated Password</div>
-            <div className='break-all rounded-md border p-2'>{password}</div>
+            <div className='rounded-md border p-2 break-all'>{password}</div>
             <div className='flex gap-2'>
               <Button onClick={handleCopyPassword} type='button'>
                 Copy

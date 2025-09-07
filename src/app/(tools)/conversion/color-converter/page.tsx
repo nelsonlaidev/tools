@@ -1,6 +1,5 @@
 'use client'
 
-import { Input } from '@tszhong0411/ui'
 import { colord, extend, getFormat } from 'colord'
 import a11yPlugin from 'colord/plugins/a11y'
 import cmykPlugin from 'colord/plugins/cmyk'
@@ -11,6 +10,7 @@ import { useState } from 'react'
 
 import Container from '@/components/container'
 import Title from '@/components/title'
+import { Input } from '@/components/ui/input'
 
 extend([hwbPlugin, cmykPlugin, lchPlugin, namesPlugin, a11yPlugin])
 
@@ -104,7 +104,7 @@ const ColorConverter = () => {
           <span className='sr-only'>Select color</span>
         </label>
         <input
-          className='invisible absolute left-0 top-2'
+          className='invisible absolute top-2 left-0'
           type='color'
           id='color'
           onChange={(e) => {

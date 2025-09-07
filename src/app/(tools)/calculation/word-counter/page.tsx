@@ -1,11 +1,11 @@
 'use client'
 
-import { Textarea } from '@tszhong0411/ui'
 import { useState } from 'react'
 import { useDebounce } from 'use-debounce'
 
 import Container from '@/components/container'
 import Title from '@/components/title'
+import { Textarea } from '@/components/ui/textarea'
 import StatItem from '@/components/word-counter/stat-item'
 import { useTextStats } from '@/hooks/use-text-stats'
 

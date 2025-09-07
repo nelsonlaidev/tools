@@ -1,12 +1,12 @@
 'use client'
 
 import { useOs } from '@mantine/hooks'
-import { cn } from '@tszhong0411/utils'
 import { useMemo, useState } from 'react'
 import { useEventListener } from 'usehooks-ts'
 
 import Container from '@/components/container'
 import Title from '@/components/title'
+import { cn } from '@/utils/cn'
 
 type KeyType = {
   keyName: string
@@ -25,7 +25,7 @@ const Key = (props: KeyProps) => {
   return (
     <div
       className={cn(
-        'flex h-[35px] w-8 items-center justify-center rounded bg-[#333] text-sm text-white shadow-[rgb(34_34_34)_0px_4px_0px_5px]',
+        'flex h-[35px] w-8 items-center justify-center rounded-sm bg-[#333] text-sm text-white shadow-[rgb(34_34_34)_0px_4px_0px_5px]',
         active && 'bg-green-800'
       )}
       style={item.style}

@@ -1,14 +1,16 @@
 'use client'
 
-import { buttonVariants, Link } from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
 import { ArrowLeftIcon } from 'lucide-react'
+import Link from 'next/link'
+
+import { cn } from '@/utils/cn'
+
+import { buttonVariants } from './ui/button'
 
 const BackButton = () => {
   return (
     <Link href='/' className={cn(buttonVariants({ variant: 'outline' }), 'group')}>
-      <ArrowLeftIcon className='mr-2 size-4 transition-transform group-hover:-translate-x-0.5' />{' '}
-      Back
+      <ArrowLeftIcon className='mr-2 size-4 transition-transform group-hover:-translate-x-0.5' /> Back
     </Link>
   )
 }

@@ -1,11 +1,12 @@
 'use client'
 
-import { Input } from '@tszhong0411/ui'
 import Link from 'next/link'
-import React, { useCallback, useMemo } from 'react'
+import * as React from 'react'
+import { useCallback, useMemo } from 'react'
 import { useDebounce } from 'use-debounce'
 
 import Hero from '@/components/hero'
+import { Input } from '@/components/ui/input'
 import { type Tool, TOOLS } from '@/lib/tool-groups'
 
 type FilteredTools = {
@@ -87,15 +88,12 @@ const Item = (props: Tool) => {
   const Icon = icon
 
   return (
-    <Link
-      href={link}
-      className='flex items-start gap-4 rounded-lg bg-muted/50 p-6 transition-colors hover:bg-muted'
-    >
+    <Link href={link} className='flex items-start gap-4 rounded-lg bg-muted/50 p-6 transition-colors hover:bg-muted'>
       <div className='rounded-lg bg-accent p-2'>
         <Icon className='size-4' style={{ color }} />
       </div>
       <div className='space-y-1'>
-        <h3 className='text-lg font-medium leading-none tracking-tight'>{label}</h3>
+        <h3 className='text-lg leading-none font-medium tracking-tight'>{label}</h3>
         <p className='text-sm text-muted-foreground'>{description}</p>
       </div>
     </Link>

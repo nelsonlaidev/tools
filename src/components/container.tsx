@@ -1,4 +1,4 @@
-import { cn } from '@tszhong0411/utils'
+import { cn } from '@/utils/cn'
 
 type ContainerProps = {
   className: string

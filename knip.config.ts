@@ -1,13 +1,10 @@
-import { type KnipConfig } from 'knip'
+import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {
-  commitlint: {
-    config: 'commitlint.config.mjs'
-  },
-  ignoreBinaries: ['only-allow'],
-  ignoreDependencies: ['prettier-plugin-*'],
-  postcss: {
-    config: 'postcss.config.mjs'
+  entry: ['./src/components/ui/*.tsx'],
+  ignoreDependencies: ['postcss'],
+  compilers: {
+    css: (text: string) => [...text.matchAll(/(?<=@)(?:import|plugin)[^;]+/g)].join('\n').replace('plugin', 'import')
   }
 }
 

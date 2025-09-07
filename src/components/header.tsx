@@ -1,5 +1,7 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
-import { Link, Logo } from '@tszhong0411/ui'
+import Link from 'next/link'
+
+import { Logo } from './ui/logo'
 
 const Header = () => {
   return (
@@ -8,9 +10,9 @@ const Header = () => {
         <Link href='/' aria-label='Home'>
           <Logo width={24} height={24} />
         </Link>
-        <Link href='https://github.com/tszhong0411/tools' aria-label='GitHub'>
+        <a target='_blank' rel='noopener noreferrer' href='https://github.com/nelsonlaidev/tools' aria-label='GitHub'>
           <SiGithub />
-        </Link>
+        </a>
       </div>
     </header>
   )

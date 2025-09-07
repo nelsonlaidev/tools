@@ -1,10 +1,10 @@
 'use client'
 
-import { Input } from '@tszhong0411/ui'
 import { useState } from 'react'
 
 import Container from '@/components/container'
 import Title from '@/components/title'
+import { Input } from '@/components/ui/input'
 
 type Units = 'PX' | 'PC' | 'PT' | 'EM' | 'REM'
 type Values = Record<Units, number>
@@ -119,7 +119,7 @@ const NumberInput = (props: InputProps) => {
   return (
     <div className='relative'>
       <Input className='p-4 pr-14' type='number' {...rest} />
-      <div className='absolute right-3 top-1/2 -translate-y-1/2 select-none'>{unit}</div>
+      <div className='absolute top-1/2 right-3 -translate-y-1/2 select-none'>{unit}</div>
     </div>
   )
 }

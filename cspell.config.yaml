@@ -1,0 +1,29 @@
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
+version: '0.2'
+useGitignore: true
+files:
+  - '**'
+  - .*
+  - .**/*
+  - '!.git/**'
+ignorePaths:
+  - pnpm-lock.yaml
+dictionaries:
+  - npm
+  - softwareTerms
+  - fullstack
+  - html
+  - css
+words:
+  - backquote
+  - bradlc
+  - dbaeumer
+  - jedec
+  - nelsonlaidev
+  - pgdn
+  - pgup
+  - prtsc
+  - scrlk
+  - sonarjs
+  - umami
+  - usehooks

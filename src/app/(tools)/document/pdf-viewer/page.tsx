@@ -5,18 +5,19 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css'
 
 import { Viewer, Worker } from '@react-pdf-viewer/core'
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout'
-import { toast } from '@tszhong0411/ui'
 import { FileIcon } from 'lucide-react'
 import pkg from 'package.json'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDropzone } from 'react-dropzone'
+import { toast } from 'sonner'
 
 import Container from '@/components/container'
 import Title from '@/components/title'
+import { useIsMounted } from '@/hooks/use-is-mounted'
 import { getExtension } from '@/lib/get-extension'
 
 const PDFViewer = () => {
-  const [mounted, setMounted] = useState(false)
+  const isMounted = useIsMounted()
   const [url, setUrl] = useState('')
   const onDrop = (files: File[]) => {
     setUrl(URL.createObjectURL(files[0]!))
@@ -35,10 +36,6 @@ const PDFViewer = () => {
     }
   })
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   return (
     <Container className='flex max-w-5xl flex-col items-center justify-center'>
       <Title title='PDF Viewer' />
@@ -53,10 +50,8 @@ const PDFViewer = () => {
           <p>Drag and drop PDF here, or click to select a file</p>
         </div>
 
-        {mounted && url && (
-          <Worker
-            workerUrl={`https://unpkg.com/pdfjs-dist@${pkg.dependencies['pdfjs-dist']}/build/pdf.worker.min.js`}
-          >
+        {isMounted && url && (
+          <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pkg.dependencies['pdfjs-dist']}/build/pdf.worker.min.js`}>
             <div className='my-20 h-[1000px]'>
               <Viewer fileUrl={url} theme={'dark'} plugins={[defaultLayoutPluginInstance]} />
             </div>

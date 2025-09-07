@@ -1,23 +1,17 @@
 'use client'
 
-import {
-  Button,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  toast
-} from '@tszhong0411/ui'
 import { saveAs } from 'file-saver'
 import { filesize } from 'filesize'
 import { ImageIcon, XIcon } from 'lucide-react'
 import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
+import { toast } from 'sonner'
 import { v4 as uuid } from 'uuid'
 
 import Container from '@/components/container'
 import Title from '@/components/title'
+import { Button } from '@/components/ui/button'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { base64ToSvg } from '@/lib/base64-to-svg'
 import { getExtension } from '@/lib/get-extension'
 import { imageToBase64 } from '@/lib/image-to-base64'
@@ -47,8 +41,19 @@ const options = [
 ] as const
 
 const download = async (result: string, filename: string, to: string) => {
-  const blob = await (await fetch(result)).blob()
+  const response = await fetch(result)
+  const blob = await response.blob()
   saveAs(blob, `${filename.replace(/\.[^./]+$/, '')}.${to}`)
+}
+
+const getConversionFunction = (to: string, extension: string) => {
+  if (to === 'svg') {
+    return base64ToSvg
+  } else if (extension === 'SVG') {
+    return svgToBase64
+  } else {
+    return imageToBase64
+  }
 }
 
 const ImageConverter = () => {
@@ -64,7 +69,7 @@ const ImageConverter = () => {
         size: filesize(file.size, {
           base: 2,
           standard: 'jedec'
-        }).toString(),
+        }),
         extension: getExtension(file.name).toUpperCase()
       }
 
@@ -85,12 +90,7 @@ const ImageConverter = () => {
   })
 
   const setAllExtensions = (opts: Option) => {
-    setFiles((prev) =>
-      prev.map((file) => {
-        file.to = opts
-        return file
-      })
-    )
+    setFiles((prev) => prev.map((file) => ({ ...file, to: opts })))
   }
 
   const setExtension = (id: string, option: Option) => {
@@ -107,34 +107,24 @@ const ImageConverter = () => {
     setFiles([])
   }
 
+  const updateFileResult = (id: string, result: string) => {
+    setFiles((prev) => prev.map((f) => (f.id === id ? { ...f, result } : f)))
+  }
+
+  const convertSingleFile = (imageFile: ImageFile) => {
+    const { extension, to, file, id } = imageFile
+
+    if (!to) return
+
+    const conversion = getConversionFunction(to, extension)
+    conversion(file, (result) => {
+      updateFileResult(id, result)
+    })
+  }
+
   const convertAll = () => {
     for (const imageFile of files) {
-      const { extension, to, file, id } = imageFile
-
-      if (to) {
-        let conversion
-
-        if (to === 'svg') {
-          conversion = base64ToSvg
-        } else if (extension === 'SVG') {
-          conversion = svgToBase64
-        } else {
-          conversion = imageToBase64
-        }
-
-        conversion(file, (result) => {
-          setFiles((prev) =>
-            prev.map((f) => {
-              if (f.id === id)
-                return {
-                  ...f,
-                  result
-                }
-              return f
-            })
-          )
-        })
-      }
+      convertSingleFile(imageFile)
     }
   }
 
