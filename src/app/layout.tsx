@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
+  creator: 'nelsonlaidev',
+  manifest: '/site.webmanifest',
+  alternates: {
+    canonical: SITE_URL
+  },
   robots: {
     index: true,
     follow: true,
@@ -40,35 +45,12 @@ export const metadata: Metadata = {
     name: MY_NAME,
     url: 'https://nelsonlai.dev'
   },
-  manifest: '/site.webmanifest',
-  twitter: {
-    card: 'summary_large_image',
-    title: MY_NAME,
-    description: SITE_DESCRIPTION,
-    site: '@nelsonlaidev',
-    siteId: '1152256803746377730',
-    creator: '@nelsonlaidev',
-    creatorId: '1152256803746377730',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: SITE_DESCRIPTION
-      }
-    ]
-  },
-  alternates: {
-    canonical: SITE_URL
-  },
-  keywords: ['tools', 'free tools', 'web tools', 'tools for developers', 'tools for designers'],
-  creator: 'nelsonlaidev',
   openGraph: {
-    url: SITE_URL,
-    type: 'website',
     title: SITE_TITLE,
-    siteName: SITE_TITLE,
     description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_TITLE,
+    type: 'website',
     locale: 'en-US',
     images: [
       {
@@ -79,6 +61,12 @@ export const metadata: Metadata = {
         type: 'image/png'
       }
     ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    siteId: '1152256803746377730',
+    creator: '@nelsonlaidev',
+    creatorId: '1152256803746377730'
   },
   icons: {
     icon: {
