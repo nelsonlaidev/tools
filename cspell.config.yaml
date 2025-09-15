@@ -3,8 +3,8 @@ version: '0.2'
 useGitignore: true
 files:
   - '**'
-  - .*
-  - .**/*
+  - '.*'
+  - '.*/**'
   - '!.git/**'
 ignorePaths:
   - pnpm-lock.yaml
