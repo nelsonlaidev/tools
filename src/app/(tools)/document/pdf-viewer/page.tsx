@@ -51,7 +51,7 @@ const PDFViewer = () => {
         </div>
 
         {isMounted && url && (
-          <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pkg.dependencies['pdfjs-dist']}/build/pdf.worker.min.js`}>
+          <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pkg.dependencies['pdfjs-dist']}/build/pdf.worker.min.mjs`}>
             <div className='my-20 h-[1000px]'>
               <Viewer fileUrl={url} theme={'dark'} plugins={[defaultLayoutPluginInstance]} />
             </div>
