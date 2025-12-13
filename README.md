@@ -1,6 +1,6 @@
 <p align="center">
   <img src="public/icon.png" height="128">
-  <h1 align="center">Links</h1>
+  <h1 align="center">Tools</h1>
 </p>
 
 ## Tools
